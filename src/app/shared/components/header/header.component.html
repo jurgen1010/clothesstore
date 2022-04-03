@@ -1,0 +1,51 @@
+<div id="header-container">
+  <header>
+    <img
+      id="hamburger"
+      src="assets/icons/hamburger.svg"
+      alt="hamburger menu"
+      (click)="sidebarOpened = true"
+      title="Abrir menú"
+    />
+
+    <img
+      alt="logo"
+      height="initial"
+      id="logo"
+      (click)="query = ''"
+      routerLink="/"
+      src="assets/icons/logo.svg"
+      title="Ir al inicio"
+      width="initial"
+    />
+    <app-search [buttonQuery]="query"></app-search>
+    <a id="cart" routerLink="/cart" title="Ver carrito">
+      <img alt="Cart icon" id="cart-icon" src="assets/icons/icon-cart.svg" width="initial" height="initial" />
+      <span class="badge">
+        {{ cartSvc.totalItems < 100 ? cartSvc.totalItems : '9+' }}
+      </span>
+    </a>
+    <img
+      alt="user-icon"
+      height="initial"
+      id="user-icon"
+      routerLink="/"
+      src="assets/icons/icon-user.svg"
+      width="initial"
+    />
+    <div id="login">Iniciar sesión</div>
+  </header>
+  <app-navbar
+    id="navbar-mode"
+    [class]="sidebarOpened ? 'sidebar-mode' : 'navabar-mode'"
+    [sidebarMode]="sidebarOpened"
+    (sidebarClose)="sidebarOpened = !$event.valueOf()"
+    (query)="query = $event.valueOf()"
+  ></app-navbar>
+  <app-navbar
+    *ngIf="sidebarOpened"
+    [sidebarMode]="sidebarOpened"
+    (sidebarClose)="sidebarOpened = !$event.valueOf()"
+    (query)="query = $event.valueOf()"
+  ></app-navbar>
+</div>

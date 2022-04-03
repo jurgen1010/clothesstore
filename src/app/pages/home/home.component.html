@@ -1,0 +1,19 @@
+<div id="home-container">
+  <app-images-carousel></app-images-carousel>
+  <article>
+    <div id="highlighted-categories">
+      <div class="category">
+        <img alt="" src="assets/images/categorias-destacadas-moda-infantil.png" srcset="" />
+        <h3 title="Buscar categoria">MODA INFATIL</h3>
+      </div>
+      <div class="category">
+        <img alt="" src="assets/images/categorias-destacadas-proteccion.png" srcset="" />
+        <h3 title="Buscar categoria">PROTECCION</h3>
+      </div>
+    </div>
+    <h1>PRODUCTOS MÁS BUSCADOS</h1>
+    <div id="most-wanted">
+      <app-products-carousel [products]="productsMostWanted"></app-products-carousel>
+    </div>
+  </article>
+</div>

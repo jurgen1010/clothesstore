@@ -1,0 +1,90 @@
+{
+  "root": true,
+  "ignorePatterns": ["projects/**/*"],
+  "overrides": [
+    {
+      "files": [
+        "src/**/*.spec.ts", "src/**/*.d.ts"
+      ],
+      "parserOptions": {
+        "project": "./src/tsconfig.spec.json"
+      },
+      // Jasmine rules
+      "extends": [
+        "plugin:jasmine/recommended"
+      ],
+      // Plugin to run Jasmine rules
+      "plugins": [
+        "jasmine"
+      ],
+      "env": { "jasmine": true },
+      // Turn off 'no-unused-vars' rule
+      "rules": {
+        "@typescript-eslint/no-unused-vars": "off"
+      }
+    },
+    {
+      "files": ["*.ts"],
+      "parserOptions": {
+        "project": ["tsconfig.json"],
+        "createDefaultProgram": true
+      },
+      "extends": [
+        "plugin:@angular-eslint/recommended",
+        "plugin:@angular-eslint/template/process-inline-templates",
+        "airbnb-typescript/base",
+        "prettier"
+      ],
+      "plugins": ["prettier", "unused-imports"],
+      "rules": {
+        "no-console": "off",
+        "@angular-eslint/directive-selector": [
+          "error",
+          {
+            "type": "attribute",
+            "prefix": "app",
+            "style": "camelCase"
+          }
+        ],
+        "@angular-eslint/component-selector": [
+          "error",
+          {
+            "type": "element",
+            "prefix": "app",
+            "style": "kebab-case"
+          }
+        ],
+        "prettier/prettier": "error",
+        // if using airbnb
+        "import/prefer-default-export": "off",
+        "@typescript-eslint/lines-between-class-members": "off",
+        //Auto remove unused imports
+        "unused-imports/no-unused-imports": "error",
+        "unused-imports/no-unused-vars": [
+          "warn",
+          {
+            "vars": "all",
+            "varsIgnorePattern": "^_",
+            "args": "after-used",
+            "argsIgnorePattern": "^_"
+          }
+        ],
+        //SortModel imports
+        "sort-imports": [
+          "error",
+          {
+            "ignoreDeclarationSort": true
+          }
+        ]
+      }
+    },
+    {
+      "files": ["*.html"],
+      "extends": ["plugin:@angular-eslint/template/recommended", "prettier"],
+      "plugins": ["prettier"],
+      "rules": {
+        "prettier/prettier": "error"
+      }
+    }
+  ]
+}

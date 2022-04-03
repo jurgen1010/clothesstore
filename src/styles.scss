@@ -1,0 +1,121 @@
+@import '~ngx-owl-carousel-o/lib/styles/scss/owl.carousel';
+@import '~ngx-owl-carousel-o/lib/styles/scss/owl.theme.default';
+@import url('https://fonts.cdnfonts.com/css/roboto');
+@import url('https://fonts.cdnfonts.com/css/helvetica-neue-9');
+@import url('https://fonts.cdnfonts.com/css/bebas');
+
+
+//Global variables
+:root {
+  --background: #fff;
+  --ligther: #F4F4F4;
+  --ligther-1: rgba(244, 244, 244, 0.3);
+
+  --background-dark: #000;
+  --darker: #000000B8;
+  --darker-1: #00000015;
+
+  --border-ligther: #00000029;
+
+  --gray-1: #606060;
+  --gray-2: #494D54;
+  --gray-3: #EEEEEE;
+  --gray-4: #E6E6E6;
+  --gray-5: #DEDEDE;
+
+  --primary: #5B17AA;
+  --accent: #6B6B6B;
+
+  --break-point-mob: 751px;
+}
+
+*,
+*:before,
+*:after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  font-family: sans-serif, "Helvetica Neue", "Lucida Grande", Arial;
+}
+
+html,
+html a {
+  -webkit-font-smoothing: antialiased;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.004);
+}
+
+#wrapper {
+  min-height: 100%;
+  position: relative;
+  clear: both;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: var(--background);
+}
+
+h1, h2, h3, a, li {
+  font-family: "HelveticaNeue-Bold", "Helvetica Neue", serif;
+  font-weight: bold;
+}
+
+input[type="submit"],
+input[type="reset"],
+input[type="button"],
+button {
+  background: none;
+  border: none;
+  color: var(--background);
+  cursor: default;
+  font: inherit;
+  line-height: normal;
+  overflow: visible;
+  padding: 0;
+  -webkit-user-select: none; /* for button */
+  -webkit-appearance: button; /* for input */
+  -moz-user-select: none;
+  -ms-user-select: none;
+
+  &:hover, li:hover {
+    cursor: pointer;
+    background-color: var(--accent)
+  }
+
+  &:focus {
+    border-color: transparent;
+    box-shadow: none;
+  }
+
+  &:active {
+    outline: none;
+    border: none;
+  }
+
+  &:hover, &:focus {
+    opacity: 0.7;
+  }
+
+}
+
+input {
+  border: none;
+
+  &:focus {
+    border-color: transparent transparent;
+    box-shadow: none;
+  }
+}
+
+ul {
+  list-style: none;
+}
+
+a, li, label {
+  text-decoration: none;
+  color: var(--background);
+}

@@ -1,0 +1,28 @@
+<div *ngIf="product" id="card">
+  <span *ngIf="pricePromotion" id="discount" title="Producto en descuento">-{{ discount | percent }}</span>
+  <span *ngIf="product.listing_type_id === 'gold_pro'" id="golden-listing" title="Producto destacado">🌟</span>
+  <img [alt]="product.title" [src]="product.thumbnail" id="card-image" is="image" rel="preload" />
+  <div id="card-details">
+    <a
+      [href]="toSafeUrl(product.permalink)"
+      class="product_name"
+      target="_blank"
+      rel="noopener"
+      title="Ver más sobre el producto"
+    >
+      {{ product.title }}
+    </a>
+    <div id="prices">
+      <p *ngIf="pricePromotion" id="price-promotion">{{ pricePromotion | currency: 'COP':'symbol-narrow':'1.0-0' }}</p>
+      <p [ngClass]="pricePromotion ? 'price-regular' : 'price-amount'">
+        {{ product.price | currency: 'COP':'symbol-narrow':'1.0-0' }}
+      </p>
+    </div>
+  </div>
+  <div id="add-to-cart">
+    <span *ngIf="numAddedCart" id="added-cart">{{ numAddedCart < 10 ? numAddedCart : '9+' }}</span>
+    <button (click)="addToCart(product)">
+      <img alt="icon cart" src="assets/icons/icon-cart-ligth.svg" /> Add to Cart
+    </button>
+  </div>
+</div>

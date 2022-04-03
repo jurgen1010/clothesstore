@@ -1,0 +1,95 @@
+{
+  "root": true,
+  "ignorePatterns": [
+    "projects/**/*"
+  ],
+  "overrides": [
+    {
+      "files": [
+        "*.ts"
+      ],
+      "parserOptions": {
+        "project": [
+          "tsconfig.json"
+        ],
+        "createDefaultProgram": true
+      },
+      "extends": [
+        "plugin:@angular-eslint/recommended",
+        "plugin:@angular-eslint/template/process-inline-templates",
+        // AirBnB Styleguide rules
+        //TODO: Verificar si es necesario
+        "airbnb-typescript/base"
+      ],
+      "rules": {
+        "@angular-eslint/directive-selector": [
+          "error",
+          {
+            "type": "attribute",
+            "prefix": "app",
+            "style": "camelCase"
+          }
+        ],
+        "@angular-eslint/component-selector": [
+          "error",
+          {
+            "type": "element",
+            "prefix": "app",
+            "style": "kebab-case"
+          }
+        ],
+        "max-len": [
+          "error",
+          {
+            "code": 140
+          }
+        ],
+        "import/prefer-default-export": "off"
+//        "no-console": 0
+      }
+    },
+    {
+      "files": [
+        "*.html"
+      ],
+      "extends": [
+        "plugin:@angular-eslint/template/recommended",
+        // Settings for Prettier
+//        "prettier/@typescript-eslint",
+        "plugin:prettier/recommended"
+      ],
+      "rules": {
+        "max-len": [
+          "error",
+          {
+            "code": 140
+          }
+        ]
+      }
+    },
+    {
+      "files": [
+        "src/**/*.spec.ts",
+        "src/**/*.d.ts"
+      ],
+      "parserOptions": {
+        "project": "./src/tsconfig.spec.json"
+      },
+      // Jasmine rules
+      "extends": [
+        "plugin:jasmine/recommended"
+      ],
+      // Plugin to run Jasmine rules
+      "plugins": [
+        "jasmine"
+      ],
+      "env": {
+        "jasmine": true
+      },
+      // Turn off 'no-unused-vars' rule
+      "rules": {
+        "@typescript-eslint/no-unused-vars": "off"
+      }
+    }
+  ]
+}

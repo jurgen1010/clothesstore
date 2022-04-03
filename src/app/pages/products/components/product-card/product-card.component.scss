@@ -1,0 +1,130 @@
+#card {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+
+  background-color: var(--ligther);
+  border: 1px var(--gray-4) solid;
+  transition: all 0.6s;
+  max-height: 562px;
+  height: 562px;
+  width: 337px;
+  padding: 0;
+
+  position: relative;
+
+  #discount, #golden-listing, #added-cart {
+    position: absolute;
+    top: 20px;
+    &:hover{
+      cursor: pointer;
+    }
+  }
+
+  #discount {
+    left: 20px;
+    height: 35px;
+    width: 87px;
+    background-color: var(--primary);
+    color: var(--background);
+    font-weight: bold;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #golden-listing {
+    right: 20px;
+    font-size: 25px;
+  }
+
+  #card-image {
+    width: inherit;
+    height: 351px;
+    object-fit: cover;
+  }
+
+  #card-details {
+    padding: 0 30px;
+    font-weight: bold;
+    text-justify: inter-word;
+    word-wrap: break-word;
+
+    .product_name {
+      text-align: justify;
+      font-weight: normal;
+      color: var(--background-dark);
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    #prices {
+      margin: 20px 0;
+      display: flex;
+      justify-content: space-between;
+
+      * {
+        font-size: 120%;
+      }
+
+      #price-promotion {
+        color: var(--primary);
+        font-weight: bolder;
+      }
+
+      .price-regular {
+        color: var(--accent);
+        font-weight: lighter;
+        text-decoration-line: line-through;
+      }
+
+      .price-amount {
+        color: var(--background-dark);
+        font-weight: bolder;
+      }
+    }
+
+  }
+
+  #add-to-cart {
+    position: relative;
+
+    #added-cart {
+      position: absolute;
+      left: 90px;
+      top: 10px;
+      font-size: 12px;
+      color: var(--accent);
+    }
+
+    button {
+      border: none;
+      outline: 0;
+      padding: 12px;
+      color: var(--background);
+      background-color: #000;
+      text-align: center;
+      cursor: pointer;
+      width: 100%;
+      font-size: 18px;
+      display: flex;
+      justify-content: center;
+
+      &:hover {
+        opacity: 0.7;
+      }
+
+      img {
+        color: white;
+        width: 17.21px;
+        height: 17.21px;
+        margin-right: 10px;
+      }
+    }
+  }
+
+}
+

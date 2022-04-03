@@ -1,0 +1,15 @@
+<div id="search-wrapper">
+  <input
+    [formControl]="search"
+    (keydown)="onChange($event.key)"
+    aria-describedby="search-input"
+    aria-label="Buscar aquí producto"
+    class="input-search"
+    placeholder="Buscar aquí producto"
+    type="text"
+    title="Ingrese el producto que quiere buscar"
+  />
+  <div id="btn-search">
+    <img src="assets/icons/icon-search.svg" alt="search-icon" width="initial" height="initial" />
+  </div>
+</div>

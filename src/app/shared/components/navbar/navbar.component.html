@@ -1,0 +1,18 @@
+<nav id="nav" role="navigation">
+  <div id="filters" [class]="sidebarMode ? 'sidebar-mode' : 'navbar-mode'">
+    <div *ngIf="sidebarMode" id="close-sidebar">
+      <img
+        src="assets/icons/sidebar-close.svg"
+        alt="sidebar close button"
+        (click)="sidebarClose.emit(true)"
+        title="Cerrar menú (ESC)"
+      />
+    </div>
+    <span (click)="onFilter('hombre')">Hombre</span>
+    <span (click)="onFilter('mujer')">Mujer</span>
+    <span (click)="onFilter('junior')">Junior</span>
+    <span (click)="onFilter('niños')">Niños</span>
+    <span (click)="onFilter('accesorios')">Accesorios</span>
+    <span (click)="onFilter('ofertas')">Ofertas</span>
+  </div>
+</nav>

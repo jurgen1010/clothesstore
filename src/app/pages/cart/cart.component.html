@@ -1,0 +1,96 @@
+<div *ngIf="cart$ | async as items" id="cart-container" style="margin-bottom: 100px">
+  <main *ngIf="items.length > 0">
+    <div class="cart-item-container">
+      <div class="promo-code-contain">
+        <label for="promo-code">Enter a promotional code</label>
+        <input
+          class="promo-code-field"
+          id="promo-code"
+          maxlength="5"
+          name="promo-code"
+          placeholder="XXXXXXXXXX"
+          style="background: var(--gray-3) 0 0 no-repeat padding-box; color: var(--accent)"
+          type="text"
+        />
+        <button class="promo-code-cta">Aplicar</button>
+      </div>
+      <div class="cart-item-headers">
+        <ul>
+          <li class="item item-heading">Item</li>
+          <li class="price">Price</li>
+          <li class="quantity">Quantity</li>
+          <li class="subtotal">Subtotal</li>
+        </ul>
+      </div>
+      <div *ngFor="let item of items" class="cart-item">
+        <div class="item">
+          <div class="product-image">
+            <img [src]="item.productThumbnail" alt="product image" class="product-frame" />
+          </div>
+          <div class="product-details">
+            <h1>
+              <strong>
+                <span class="item-quantity">{{ item.productQty }}</span> x {{ item.productName }}
+              </strong>
+            </h1>
+          </div>
+        </div>
+        <div class="price">{{ item.productPrice | currency: 'COP':'symbol-narrow':'1.0-0' }}</div>
+        <div class="quantity">
+          <input
+            class="quantity-field"
+            #qty
+            min="1"
+            max="100"
+            [value]="item.productQty"
+            type="number"
+            (change)="updateItem(+qty.value, item.productId)"
+          />
+        </div>
+        <div class="subtotal">{{ item.productQty * item.productPrice | currency: 'COP':'symbol-narrow':'1.0-0' }}</div>
+        <div class="remove">
+          <button (click)="deleteItem(item.productId, item.productName)" title="Remover item">REMOVER ITEM</button>
+        </div>
+      </div>
+    </div>
+    <aside>
+      <div class="summary">
+        <div class="summary-total-items"><span class="total-items"></span> Items en tu carrito</div>
+        <div class="summary-subtotal">
+          <div class="subtotal-title">Subtotal</div>
+          <div class="subtotal-value final-value" id="basket-subtotal">
+            {{ cartSvc.totalPrice | currency: 'COP':'symbol-narrow':'1.0-0' }}
+          </div>
+          <div class="summary-promo hide">
+            <div class="promo-title">Promotion</div>
+            <div class="promo-value final-value" id="basket-promo"></div>
+          </div>
+        </div>
+        <div class="summary-delivery">
+          <select id="delivery-form" class="summary-delivery-selection" name="delivery-collection">
+            <option selected="selected" value="0">Seleccione la forma de entrega</option>
+            <option value="collection">Domicilio</option>
+            <option value="first-class">Recogerlo en nuestas tiendas</option>
+            <option value="signed-for">Acordar con el vendedor</option>
+          </select>
+        </div>
+        <div class="summary-total">
+          <div class="total-title">Total</div>
+          <div class="total-value final-value" id="basket-total">{{ cartSvc.totalPrice }}</div>
+        </div>
+        <div class="summary-checkout" style="margin-bottom: 3vw">
+          <button class="checkout-cta" title="Pagar">Pagar</button>
+        </div>
+        <div class="summary-checkout">
+          <button
+            (click)="onClear()"
+            style="background-color: transparent; color: var(--primary); text-align: center; width: 100%"
+            title="Remover todos los items"
+          >
+            REMOVER ITEMS
+          </button>
+        </div>
+      </div>
+    </aside>
+  </main>
+</div>
